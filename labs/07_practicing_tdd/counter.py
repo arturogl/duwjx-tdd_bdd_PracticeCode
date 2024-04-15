@@ -37,3 +37,11 @@ def read_counter(name):
 
     app.logger.info(f"Counter: {name} is {counter}")
     return { name: counter }, status.HTTP_200_OK
+
+def test_delete_a_counter(self):
+    """It should delete the counter"""
+    result = self.client.post("/counters/fob")
+    self.assertEqual(result.status_code, status.HTTP_201_CREATED)
+    # Delete the counter
+    result = self.client.delete("/counters/fob")
+    self.assertEqual(result.status_code, status.HTTP_204_NO_CONTENT)
